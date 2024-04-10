@@ -1,0 +1,52 @@
+.contenedor-botones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px; /* Espacio entre los botones */
+    height: 100vh; /* Altura del viewport */
+}
+
+.botonJugar, .botonFacil, .botonMedio, .botonDificil {
+    background: rgb(255, 140, 0);
+    width: 150px; /* Ancho de los botones */
+    height: 50px; /* Altura de los botones */
+    font-size: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    border: 2px solid white; /* Añadir borde blanco */
+    border-radius: 15px;
+}
+
+.botonJugar:hover {
+    background-color: rgba(255, 140, 0, 0.719);
+    color: #ffffff;
+}
+
+.botonFacil:hover {
+    background-color: rgba(0, 255, 0, 0.719);
+    color: #ffffff;
+}
+
+.botonMedio:hover {
+    background-color: rgba(255, 234, 0, 0.719);
+    color: #ffffff;
+}
+
+.botonDificil:hover {
+    background-color: rgba(255, 0, 0, 0.719);
+    color: #ffffff;
+}
+
+
+
+body {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to right, 
+        url('../images/pokemon\ fondo.png') 0%, 
+        url('../images/pokemon\ fondo.png') 50%, 
+        url('../images/poker\ fondo.png') 50%, 
+        url('../images/poker\ fondo.png') 100%);
+    background-size: cover; 
+}
