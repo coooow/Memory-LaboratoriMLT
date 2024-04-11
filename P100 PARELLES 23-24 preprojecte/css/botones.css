@@ -99,12 +99,14 @@
     filter: blur(0); /* Al pasar el cursor sobre la imagen, eliminamos el desenfoque */
 }
 
-h1 {
-    font-size: 60px;
+.text {
+
+    background: rgb(255, 140, 0);
+    width: 300px; /* Ancho de los botones */
+    height: 100px; /* Altura de los botones */
+    font-size: 15px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    text-shadow: 
-    -1px -1px 0 #ffffff,  
-     1px -1px 0 #ffffff,
-    -1px  1px 0 #f6f2f2,
-     1px  1px 0 #ffffff;
+    transition: background-color 0.3s, color 0.3s;
+    border: 2px solid white; /* Añadir borde blanco */
+    border-radius: 15px;
 }
