@@ -129,7 +129,7 @@
 }
 
 #imagen1:hover, #imagen2:hover {
-    filter: blur(0); /* Al pasar el cursor sobre la imagen, eliminamos el desenfoque */
+   transition-duration: 300ms;
 }
 
 h1 {
