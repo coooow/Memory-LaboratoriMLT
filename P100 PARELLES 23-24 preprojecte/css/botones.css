@@ -1,10 +1,10 @@
 #imagen1 {
-    background-image: url('../images/poker fondo.png'); /* Quita la barra invertida y elimina los espacios en el nombre del archivo */
+    background-image: url('../images/poker fondo.jpg'); /* Quita la barra invertida y elimina los espacios en el nombre del archivo */
 
 }
 
 #imagen2 {
-    background-image: url('../images/pokemon fondo.png'); /* Quita la barra invertida y elimina los espacios en el nombre del archivo */
+    background-image: url('../images/pokemon fondo.jpg'); /* Quita la barra invertida y elimina los espacios en el nombre del archivo */
 }
 
 .contenedor-imagen {
