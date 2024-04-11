@@ -23,6 +23,24 @@
     background-position: center;
 }
 
+.titol {
+    position: absolute; /* Posicionamiento absoluto para los botones */
+    transform: translate(150%, 50%); /* Ajusta para centrar completamente */
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    height: auto; /* Cambia la altura a auto para que los botones no se superpongan */
+    z-index: 1; /* Asegura que los botones estén por encima de las imágenes */
+    border-radius: 15px;
+    overflow: hidden;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-shadow: 
+    -1px -1px 0 #ffffff,  
+     1px -1px 0 #ffffff,
+    -1px  1px 0 #f6f2f2,
+     1px  1px 0 #ffffff;
+}
+
 .contenedor-botones {
     position: absolute; /* Posicionamiento absoluto para los botones */
     top: 50%; /* Centra verticalmente */
@@ -32,81 +50,100 @@
     flex-direction: column; 
     justify-content: center; 
     align-items: center; 
-    gap: 20px; 
     height: auto; /* Cambia la altura a auto para que los botones no se superpongan */
     z-index: 1; /* Asegura que los botones estén por encima de las imágenes */
 }
 
+.jugar {
+    position: absolute; /* Posicionamiento absoluto para los botones */
+    top: 90%; /* Centra verticalmente */
+    left: 50%; /* Centra horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta para centrar completamente */
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    height: auto; /* Cambia la altura a auto para que los botones no se superpongan */
+    z-index: 1; /* Asegura que los botones estén por encima de las imágenes */
+}
 
 .botonJugar, .botonFacil, .botonMedio, .botonDificil {
-    background: rgb(255, 140, 0);
-    width: 300px; /* Ancho de los botones */
-    height: 100px; /* Altura de los botones */
+    background-image: linear-gradient(to bottom right, rgb(255, 251, 0), rgb(255, 124, 2));
+    filter: brigthness(150%);
+    width: 300px;
+    height: 100px;
     font-size: 40px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    border: 2px solid white; /* Añadir borde blanco */
-    border-radius: 15px;
- 
+    transition: 0.3s;
+    border: 10px double #b2b2b2;
+    border-radius: 47px;
 }
 
 .botonJugar:hover {
-    background-color: rgba(255, 140, 0, 0.719);
+    background-image: linear-gradient(to bottom right, #5bdeff, #1a53ff);
     color: #ffffff;
     text-shadow: 
     -1px -1px 0 #000,  
      1px -1px 0 #000,
     -1px  1px 0 #000,
      1px  1px 0 #000;
+    border-color: #ffffff;
+
 }
 
 .botonFacil:hover {
-    background-color: rgba(0, 255, 0, 0.819);
+    background-image: linear-gradient(to bottom right, #4bff60, #009311);
     color: #ffffff;
     text-shadow: 
     -1px -1px 0 #000,  
      1px -1px 0 #000,
     -1px  1px 0 #000,
      1px  1px 0 #000;
+    border-color: #ffffff;
 }
 
 .botonMedio:hover {
-    background-color: rgba(255, 234, 0, 0.882);
+    background-image: linear-gradient(to bottom right, #ffef3a, #ffc021);
     color: #ffffff;
     text-shadow: 
     -1px -1px 0 #000,  
      1px -1px 0 #000,
     -1px  1px 0 #000,
      1px  1px 0 #000;
+    border-color: #ffffff;
+    
 }
 
 .botonDificil:hover {
-    background-color: rgba(255, 0, 0, 0.719);
+    background-image: linear-gradient(to bottom right, #ff2525, #d50032);
     color: #ffffff;
     text-shadow: 
     -1px -1px 0 #000,  
      1px -1px 0 #000,
     -1px  1px 0 #000,
      1px  1px 0 #000;
+    border-color: #ffffff;
+}
+
+#espai {
+    margin-top: 3px;
 }
 
 #imagen1, #imagen2 {
-    filter: blur(5px); /* Aplicamos un desenfoque inicial */
+
 }
 
 #imagen1:hover, #imagen2:hover {
     filter: blur(0); /* Al pasar el cursor sobre la imagen, eliminamos el desenfoque */
 }
 
-.text {
-
-    background: rgb(255, 140, 0);
-    width: 300px; /* Ancho de los botones */
-    height: 100px; /* Altura de los botones */
-    font-size: 15px;
+h1 {
+    font-size: 60px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    transition: background-color 0.3s, color 0.3s;
-    border: 2px solid white; /* Añadir borde blanco */
-    border-radius: 15px;
+    text-shadow: 
+    -1px -1px 0 #ffffff,  
+     1px -1px 0 #ffffff,
+    -1px  1px 0 #f6f2f2,
+     1px  1px 0 #ffffff;
 }
