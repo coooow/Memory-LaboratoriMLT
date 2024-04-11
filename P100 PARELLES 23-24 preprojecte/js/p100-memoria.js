@@ -33,24 +33,41 @@ $(function () { //cooking
         }
     }
     $(".carta").on("click", function () {
-        $(this).toggleClass("carta-girada");
+        var select = $(this);
+
+        if (select.hasClass("carta-girada")) {
+            return;
+        }
+        select.toggleClass("carta-girada");
         if (primer) {
-            var primeraCarta = this;
+            cartesSeleccionades.push($(this));
             primer = false;
         } else {
-            var segonaCarta = this;
+            cartesSeleccionades.push($(this));
             checkParella();
             primer = true;
         }
     });
 });
 
+var cartesSeleccionades = [];
+
 function checkParella() { //func para ver si es parell o no //luego compararlo con joan
-    if (primeraCarta.find(".davant").attr(".class") == segonaCarta.find(".davant").attr(".class")) {
-        primeraCarta.style.opacity = 0;
-        segonaCarta.style.opacity = 0;
+    var primeraCarta = cartesSeleccionades[0];
+    var segonaCarta = cartesSeleccionades[1];
+    var primeraClasse = primeraCarta.find(".davant").attr("class");
+    var segonaClasse = segonaCarta.find(".davant").attr("class");
+
+    if (primeraClasse === segonaClasse) {
+        setTimeout(function () {
+            primeraCarta.remove();
+            segonaCarta.remove();
+        }, 500);
     } else {
-        primeraCarta.toggleClass("carta-girada");
-        segonaCarta.toggleClass("carta-girada");
+        setTimeout(function () {
+            primeraCarta.toggleClass("carta-girada");
+            segonaCarta.toggleClass("carta-girada");
+        }, 500);
     }
+    cartesSeleccionades = [];
 }
