@@ -71,3 +71,17 @@ function checkParella() { //func para ver si es parell o no //luego compararlo c
     }
     cartesSeleccionades = [];
 }
+
+function accionImagen(id) {
+    var imagen = document.getElementById(id);
+    if (imagen.classList.contains("expandida")) {
+        imagen.classList.remove("expandida");
+    } else {
+        // Remueve la clase "expandida" de todas las imágenes antes de expandir la actual
+        var imagenes = document.querySelectorAll(".contenedor-imagen");
+        imagenes.forEach(function(img) {
+            img.classList.remove("expandida");
+        });
+        imagen.classList.add("expandida");
+    }
+}

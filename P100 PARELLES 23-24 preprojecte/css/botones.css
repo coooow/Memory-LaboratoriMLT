@@ -1,13 +1,6 @@
-.contenedor-imagen {
-    width: 50%;
-    height: 100vh; /* Esto ocupa toda la altura del viewport */
-    float: left;
-    background-size: cover;
-    background-position: center;
-}
-
 #imagen1 {
     background-image: url('../images/poker fondo.png'); /* Quita la barra invertida y elimina los espacios en el nombre del archivo */
+
 }
 
 #imagen2 {
@@ -15,31 +8,36 @@
 }
 
 .contenedor-imagen {
-    position: relative; /* Asegura que los botones posicionados absolutamente estén relativos a este contenedor */
+    position: relative;
     width: 50%;
-    height: 100vh;
+    height: 100vh; /* Asegura que el contenedor de imagen ocupe toda la altura del viewport */
     float: left;
     background-size: cover;
     background-position: center;
 }
 
+#imagen1:hover,
+#imagen2:hover {
+    transform: scale(1.1); /* Aumenta el tamaño en un 10% */
+}
+
+
 .titol {
-    position: absolute; /* Posicionamiento absoluto para los botones */
-    transform: translate(150%, 50%); /* Ajusta para centrar completamente */
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column; 
     justify-content: center; 
-    height: auto; /* Cambia la altura a auto para que los botones no se superpongan */
-    z-index: 1; /* Asegura que los botones estén por encima de las imágenes */
+    align-items: center; 
+    z-index: 1;
     border-radius: 15px;
     overflow: hidden;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-shadow: 
-    -1px -1px 0 #ffffff,  
-     1px -1px 0 #ffffff,
-    -1px  1px 0 #f6f2f2,
-     1px  1px 0 #ffffff;
+    text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #f6f2f2, 1px 1px 0 #ffffff;
 }
+
 
 .contenedor-botones {
     position: absolute; /* Posicionamiento absoluto para los botones */
@@ -130,20 +128,34 @@
     margin-top: 3px;
 }
 
-#imagen1, #imagen2 {
-
-}
-
 #imagen1:hover, #imagen2:hover {
     filter: blur(0); /* Al pasar el cursor sobre la imagen, eliminamos el desenfoque */
 }
 
 h1 {
-    font-size: 60px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    
+    background-image: linear-gradient(to bottom right, rgb(255, 251, 0), rgb(255, 124, 2));
+    filter: brigthness(150%);
+    width: 333px;
+    height: 100px;
+    font-size: 80px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-shadow: 
     -1px -1px 0 #ffffff,  
      1px -1px 0 #ffffff,
     -1px  1px 0 #f6f2f2,
      1px  1px 0 #ffffff;
 }
+
+.expandida {
+    position: fixed;
+    height: auto;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Cambia el valor de z-index según sea necesario para que la imagen esté detrás de los botones */
+    transition: transform 0.5s ease;
+    background-position: center;
+}
+
