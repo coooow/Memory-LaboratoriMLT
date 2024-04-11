@@ -1,0 +1,112 @@
+.contenedor-imagen {
+    width: 50%;
+    height: 100vh; /* Esto ocupa toda la altura del viewport */
+    float: left;
+    background-size: cover;
+    background-position: center;
+}
+
+#imagen1 {
+    background-image: url('../images/poker fondo.png'); /* Quita la barra invertida y elimina los espacios en el nombre del archivo */
+}
+
+#imagen2 {
+    background-image: url('../images/pokemon fondo.png'); /* Quita la barra invertida y elimina los espacios en el nombre del archivo */
+}
+
+.contenedor-imagen {
+    position: relative; /* Asegura que los botones posicionados absolutamente estén relativos a este contenedor */
+    width: 50%;
+    height: 100vh;
+    float: left;
+    background-size: cover;
+    background-position: center;
+}
+
+.contenedor-botones {
+    position: absolute; /* Posicionamiento absoluto para los botones */
+    top: 50%; /* Centra verticalmente */
+    left: 50%; /* Centra horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta para centrar completamente */
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 20px; 
+    height: auto; /* Cambia la altura a auto para que los botones no se superpongan */
+    z-index: 1; /* Asegura que los botones estén por encima de las imágenes */
+}
+
+
+.botonJugar, .botonFacil, .botonMedio, .botonDificil {
+    background: rgb(255, 140, 0);
+    width: 300px; /* Ancho de los botones */
+    height: 100px; /* Altura de los botones */
+    font-size: 40px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    border: 2px solid white; /* Añadir borde blanco */
+    border-radius: 15px;
+ 
+}
+
+.botonJugar:hover {
+    background-color: rgba(255, 140, 0, 0.719);
+    color: #ffffff;
+    text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+.botonFacil:hover {
+    background-color: rgba(0, 255, 0, 0.819);
+    color: #ffffff;
+    text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+.botonMedio:hover {
+    background-color: rgba(255, 234, 0, 0.882);
+    color: #ffffff;
+    text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+.botonDificil:hover {
+    background-color: rgba(255, 0, 0, 0.719);
+    color: #ffffff;
+    text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+#imagen1, #imagen2 {
+    filter: blur(5px); /* Aplicamos un desenfoque inicial */
+}
+
+#imagen1:hover, #imagen2:hover {
+    filter: blur(0); /* Al pasar el cursor sobre la imagen, eliminamos el desenfoque */
+}
+
+.text {
+
+    background: rgb(255, 140, 0);
+    width: 300px; /* Ancho de los botones */
+    height: 100px; /* Altura de los botones */
+    font-size: 15px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+    border: 2px solid white; /* Añadir borde blanco */
+    border-radius: 15px;
+}
