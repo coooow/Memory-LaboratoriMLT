@@ -18,7 +18,8 @@
 
 #imagen1:hover,
 #imagen2:hover {
-    transform: scale(1.1); /* Aumenta el tamaño en un 10% */
+    transform: scale(1.5); /* Aumenta el tamaño en un 10% */
+    z-index: 1;
 }
 
 
@@ -30,7 +31,7 @@
     display: flex;
     flex-direction: column; 
     justify-content: center; 
-    align-items: center; 
+    align-items: center;
     z-index: 1;
     border-radius: 15px;
     overflow: hidden;
@@ -129,7 +130,7 @@
 }
 
 #imagen1:hover, #imagen2:hover {
-    filter: blur(0); /* Al pasar el cursor sobre la imagen, eliminamos el desenfoque */
+    transition-duration: 300ms;
 }
 
 h1 {
@@ -143,7 +144,7 @@ h1 {
     text-shadow: 
     -1px -1px 0 #ffffff,  
      1px -1px 0 #ffffff,
-    -1px  1px 0 #f6f2f2,
+    -1px  1px 0 #ffffff,
      1px  1px 0 #ffffff;
 }
 
@@ -158,4 +159,3 @@ h1 {
     transition: transform 0.5s ease;
     background-position: center;
 }
-
