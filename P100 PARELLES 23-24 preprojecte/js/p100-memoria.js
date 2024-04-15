@@ -38,10 +38,10 @@ $(function () { //cooking
     }
     $(".carta").on("click", function () {
         var select = $(this);
-        clicsRestants--;
         var p = document.querySelector("#comptador p");
+        clicsRestants--;
         p.innerHTML = "Clics restants: "+clicsRestants;
-
+        
         if (select.hasClass("carta-girada")) {
             return;
         }
