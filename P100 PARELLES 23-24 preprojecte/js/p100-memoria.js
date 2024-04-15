@@ -3,6 +3,8 @@ var separacioH = 20, separacioV = 20;
 var nFiles = 10, nColumnes = 10;
 let primer = true;
 var files = 4, columnes = 4;
+var clicsRestants = 48;
+var numCartes = 16;
 
 var jocCartes = [
     'carta14', 'carta1', 'carta2', 'carta3', 'carta4', 'carta5', 'carta15', 'carta16', 'carta24', 'carta25', 'carta26',
@@ -16,6 +18,7 @@ $(function () { //cooking
         "width": 120 + 75 * columnes + "px",
         "height": 160 + 105 * files + "px"
     });
+    $("#comptador").append("<p>Clics restants: "+clicsRestants+"</p>");
     crearCartes(16);
     for (let f = 1; f <= files; f++) {
         for (let c = 1; c <= columnes; c++) {
@@ -35,6 +38,9 @@ $(function () { //cooking
     }
     $(".carta").on("click", function () {
         var select = $(this);
+        clicsRestants--;
+        var p = document.querySelector("#comptador p");
+        p.innerHTML = "Clics restants: "+clicsRestants;
 
         if (select.hasClass("carta-girada")) {
             return;
@@ -46,6 +52,8 @@ $(function () { //cooking
         } else {
             cartesSeleccionades.push($(this));
             checkParella();
+            checkWin();
+            checkLoss();
             primer = true;
         }
     });
@@ -60,6 +68,7 @@ function checkParella() { //func para ver si es parell o no //luego compararlo c
     var segonaClasse = segonaCarta.find(".davant").attr("class");
 
     if (primeraClasse === segonaClasse) {
+        numCartes = numCartes - 2;
         setTimeout(function () {
             primeraCarta.remove();
             segonaCarta.remove();
@@ -114,5 +123,17 @@ function crearCartes(quantesCartes){
 function copy(arrayCopiat, arrayCopia){
     for(let i=0; i<arrayCopiat.length; i++){
         arrayCopia[i] = arrayCopiat[i];
+    }
+}
+
+function checkWin(){
+    if(numCartes == 0){
+        $("#comptador").append("<p>Has guanyat!!!</p>");
+    }
+}
+
+function checkLoss(){
+    if(clicsRestants == 0){
+        $("#comptador").append("<p>Has perdut!</p>");
     }
 }
