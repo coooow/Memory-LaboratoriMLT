@@ -2,21 +2,21 @@ var ampladaCarta, alcadaCarta;
 var separacioH = 20, separacioV = 20;
 var nFiles = 10, nColumnes = 10;
 let primer = true;
-var files = 4, columnes = 4;
-var clicsRestants = 48;
-var numCartes = 16;
+var files, columnes, amplada, altura;
+var clicsRestants;
+var numCartes;
 
 var jocCartes = [
     'carta1', 'carta2', 'carta3', 'carta4', 'carta5','carta6','carta7','carta8','carta9','carta10','carta11','carta12','carta13','carta14', 'carta15', 'carta16', 'carta24', 'carta25', 'carta26',
-];
+]; 
 var cartesEmparellades = [];
 var aux = [];
 
 function iniciJoc() { //cooking
     let j = 0;
     $("#tauler").css({ //mida tauler
-        "width": 120 + 75 * columnes + "px",
-        "height": 160 + 105 * files + "px"
+        "width": amplada + "px",
+        "height": altura + "px"
     });
     $("#comptador").append("<p>Clics restants: "+clicsRestants+"</p>");
     crearCartes(16);
@@ -52,6 +52,7 @@ function iniciJoc() { //cooking
         } else {
             cartesSeleccionades.push($(this));
             checkParella();
+            
             checkWin();
             checkLoss();
             primer = true;
@@ -138,7 +139,7 @@ function checkLoss(){
     }
 }
 
-function checkParam(){
+function checkParam(){ //ver como cambiar entre decks
     var deck, pokemon;
     deck = document.getElementById("imagen1");
     pokemon = document.getElementById("imagen2");
@@ -161,16 +162,34 @@ function jugar(){
 function activarHover1(boton) {
     removerHover();
     boton.classList.add("hover-activado1");
+    files = 2;
+    columnes = 2;
+    quantesCartes = 4;
+    clicsRestants = 12;
+    altura = 300;
+    amplada = 220;
 }
 
 function activarHover2(boton) {
     removerHover();
     boton.classList.add("hover-activado2");
+    files = 3;
+    columnes = 3;
+    quantesCartes = 9;
+    clicsRestants = 27;
+    altura = 440;
+    amplada = 320;
 }
 
 function activarHover3(boton) {
     removerHover();
     boton.classList.add("hover-activado3");
+    files = 4;
+    columnes = 4;
+    quantesCartes = 16;
+    clicsRestants = 48;
+    altura = 580;
+    amplada = 420;
 }
 
 function activarHover4(boton) {
