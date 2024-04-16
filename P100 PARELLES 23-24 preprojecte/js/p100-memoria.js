@@ -7,12 +7,12 @@ var clicsRestants = 48;
 var numCartes = 16;
 
 var jocCartes = [
-    'carta14', 'carta1', 'carta2', 'carta3', 'carta4', 'carta5', 'carta15', 'carta16', 'carta24', 'carta25', 'carta26',
+    'carta1', 'carta2', 'carta3', 'carta4', 'carta5','carta6','carta7','carta8','carta9','carta10','carta11','carta12','carta13','carta14', 'carta15', 'carta16', 'carta24', 'carta25', 'carta26',
 ];
 var cartesEmparellades = [];
 var aux = [];
 
-$(function () { //cooking
+function iniciJoc() { //cooking
     let j = 0;
     $("#tauler").css({ //mida tauler
         "width": 120 + 75 * columnes + "px",
@@ -57,7 +57,7 @@ $(function () { //cooking
             primer = true;
         }
     });
-});
+};
 
 var cartesSeleccionades = [];
 
@@ -106,7 +106,7 @@ function barrejarArray(array){
     }
 }
 
-function crearCartes(quantesCartes){
+function crearCartes(quantesCartes){ //tocar esto despues
     barrejarArray(jocCartes);
     for(let i = 0; i<quantesCartes/2; i++){
         cartesEmparellades[i] = jocCartes.pop();
@@ -136,4 +136,25 @@ function checkLoss(){
     if(clicsRestants == 0){
         $("#comptador").append("<p>Has perdut!</p>");
     }
+}
+
+function checkParam(){
+    var deck, pokemon;
+    deck = document.getElementById("imagen1");
+    pokemon = document.getElementById("imagen2");
+
+    if(deck.classList.contains("expandida")){ //si deck seleccionada
+
+    } else if (pokemon.classList.contains("expandida")){ //si pokemon seleccionada
+
+    } else { //si cap seleccionada, ensenyar error
+
+    }
+    
+}
+
+function jugar(){
+    document.querySelector(".menu").style.display = "none";
+    document.querySelector(".juego").style.display = "block";
+    iniciJoc();
 }
