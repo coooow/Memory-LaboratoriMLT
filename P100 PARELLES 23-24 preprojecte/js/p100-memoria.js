@@ -158,3 +158,29 @@ function jugar(){
     document.querySelector(".juego").style.display = "block";
     iniciJoc();
 }
+function activarHover1(boton) {
+    removerHover();
+    boton.classList.add("hover-activado1");
+}
+
+function activarHover2(boton) {
+    removerHover();
+    boton.classList.add("hover-activado2");
+}
+
+function activarHover3(boton) {
+    removerHover();
+    boton.classList.add("hover-activado3");
+}
+
+function activarHover4(boton) {
+    removerHover();
+    boton.classList.add("hover-activado4");
+}
+
+function removerHover() {
+    var botones = document.querySelectorAll(".botonFacil, .botonMedio, .botonDificil, .botonJugar");
+    botones.forEach(function(boton) {
+        boton.classList.remove("hover-activado1", "hover-activado2", "hover-activado3", "hover-activado4");
+    });
+}

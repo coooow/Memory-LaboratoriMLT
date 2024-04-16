@@ -79,7 +79,7 @@
     border-radius: 47px;
 }
 
-.botonJugar:hover {
+.botonJugar:hover, .hover-activado4 {
     background-image: linear-gradient(to bottom right, #5bdeff, #1a53ff);
     color: #ffffff;
     text-shadow: 
@@ -91,7 +91,7 @@
 
 }
 
-.botonFacil:hover {
+.botonFacil:hover, .hover-activado1 {
     background-image: linear-gradient(to bottom right, #4bff60, #009311);
     color: #ffffff;
     text-shadow: 
@@ -102,7 +102,7 @@
     border-color: #ffffff;
 }
 
-.botonMedio:hover {
+.botonMedio:hover, .hover-activado2 {
     background-image: linear-gradient(to bottom right, #ffef3a, #ffc021);
     color: #ffffff;
     text-shadow: 
@@ -114,7 +114,7 @@
     
 }
 
-.botonDificil:hover {
+.botonDificil:hover, .hover-activado3 {
     background-image: linear-gradient(to bottom right, #ff2525, #d50032);
     color: #ffffff;
     text-shadow: 
