@@ -1,16 +1,16 @@
 #imagen1 {
-    background-image: url('../images/poker fondo.jpg'); /* Quita la barra invertida y elimina los espacios en el nombre del archivo */
+    background-image: url('../images/poker fondo.jpg'); 
 
 }
 
 #imagen2 {
-    background-image: url('../images/pokemon fondo.jpg'); /* Quita la barra invertida y elimina los espacios en el nombre del archivo */
+    background-image: url('../images/pokemon fondo.jpg'); 
 }
 
 .contenedor-imagen {
     position: relative;
     width: 50%;
-    height: 100vh; /* Asegura que el contenedor de imagen ocupe toda la altura del viewport */
+    height: 100vh;
     float: left;
     background-size: cover;
     background-position: center;
@@ -18,7 +18,7 @@
 
 #imagen1:hover,
 #imagen2:hover {
-    transform: scale(1.5); /* Aumenta el tamaño en un 10% */
+    transform: scale(1.5); 
     z-index: 1;
 }
 
