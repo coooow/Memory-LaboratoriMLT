@@ -19,7 +19,7 @@ function iniciJoc() { //cooking
         "height": altura + "px"
     });
     $("#comptador").append("<p>Clics restants: "+clicsRestants+"</p>");
-    crearCartes(16);
+    crearCartes(quantesCartes);
     for (let f = 1; f <= files; f++) {
         for (let c = 1; c <= columnes; c++) {
             var carta;
@@ -52,7 +52,6 @@ function iniciJoc() { //cooking
         } else {
             cartesSeleccionades.push($(this));
             checkParella();
-            
             checkWin();
             checkLoss();
             primer = true;
@@ -164,6 +163,7 @@ function activarHover1(boton) {
     boton.classList.add("hover-activado1");
     files = 2;
     columnes = 2;
+    numCartes = 4;
     quantesCartes = 4;
     clicsRestants = 12;
     altura = 300;
@@ -173,12 +173,13 @@ function activarHover1(boton) {
 function activarHover2(boton) {
     removerHover();
     boton.classList.add("hover-activado2");
-    files = 3;
-    columnes = 3;
-    quantesCartes = 9;
+    files = 2;
+    columnes = 4;
+    numCartes = 8;
+    quantesCartes = 8;
     clicsRestants = 27;
-    altura = 440;
-    amplada = 320;
+    altura = 300;
+    amplada = 420;
 }
 
 function activarHover3(boton) {
@@ -186,6 +187,7 @@ function activarHover3(boton) {
     boton.classList.add("hover-activado3");
     files = 4;
     columnes = 4;
+    numCartes = 16;
     quantesCartes = 16;
     clicsRestants = 48;
     altura = 580;
