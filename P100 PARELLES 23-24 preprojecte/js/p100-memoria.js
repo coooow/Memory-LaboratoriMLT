@@ -177,7 +177,7 @@ function activarHover2(boton) {
     columnes = 4;
     numCartes = 8;
     quantesCartes = 8;
-    clicsRestants = 27;
+    clicsRestants = 24;
     altura = 300;
     amplada = 420;
 }
