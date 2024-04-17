@@ -3,14 +3,10 @@ var separacioH = 20, separacioV = 20;
 var nFiles = 10, nColumnes = 10;
 let primer = true;
 var files, columnes, amplada, altura;
-var clicsRestants;
-var numCartes;
-
-var jocCartes = [
-    'carta1', 'carta2', 'carta3', 'carta4', 'carta5','carta6','carta7','carta8','carta9','carta10','carta11','carta12','carta13','carta14', 'carta15', 'carta16', 'carta24', 'carta25', 'carta26',
-]; 
+var clicsRestants, numCartes;
 var cartesEmparellades = [];
 var aux = [];
+var timer;
 
 function iniciJoc() { //cooking
     let j = 0;
@@ -106,11 +102,18 @@ function barrejarArray(array){
     }
 }
 
-function crearCartes(quantesCartes){ //tocar esto despues
-    barrejarArray(jocCartes);
-    for(let i = 0; i<quantesCartes/2; i++){
-        cartesEmparellades[i] = jocCartes.pop();
+function crearCartes(quantesCartes){ //funcio de creacio de cartes
+    let j; 
+    var pairList = [];
+    pairList.fill(0, 0, 16);
+    for(let i=0; i<quantesCartes/2; i++){
+        do {
+            j = Math.floor(Math.random()*16);
+        } while (pairList[j] === 1);
+        pairList[j] = 1;
+        cartesEmparellades[i] = 'carta' + j;
     }
+    barrejarArray(cartesEmparellades);
     copy(cartesEmparellades, aux);
     barrejarArray(aux);
     for(let i = quantesCartes/2; i<quantesCartes; i++){
@@ -140,23 +143,36 @@ function checkLoss(){
 
 function checkParam(){ //ver como cambiar entre decks
     var deck, pokemon;
+    let check = true;
     deck = document.getElementById("imagen1");
     pokemon = document.getElementById("imagen2");
+    btnFacil = document.querySelector(".botonFacil");
+    btnNormal = document.querySelector(".botonMedio");
+    btnDificil = document.querySelector(".botonDificil");
 
-    if(deck.classList.contains("expandida")){ //si deck seleccionada
+    /* if(deck.classList.contains("expandida")){ //si deck seleccionada
 
     } else if (pokemon.classList.contains("expandida")){ //si pokemon seleccionada
 
     } else { //si cap seleccionada, ensenyar error
 
+    } */
+
+    if(!(btnFacil.classList.contains("hover-activado1") || btnNormal.classList.contains("hover-activado2") || btnDificil.classList.contains("hover-activado3"))){
+        //error
+        check = false;
     }
-    
+
+    if(check){
+        document.querySelector(".menu").style.display = "none";
+        document.querySelector(".juego").style.display = "block";
+        iniciJoc();
+    }
 }
 
 function jugar(){
-    document.querySelector(".menu").style.display = "none";
-    document.querySelector(".juego").style.display = "block";
-    iniciJoc();
+    checkParam();
+    
 }
 function activarHover1(boton) {
     removerHover();
@@ -168,6 +184,7 @@ function activarHover1(boton) {
     clicsRestants = 12;
     altura = 300;
     amplada = 220;
+    timer = 30;
 }
 
 function activarHover2(boton) {
@@ -180,6 +197,7 @@ function activarHover2(boton) {
     clicsRestants = 24;
     altura = 300;
     amplada = 420;
+    timer = 60;
 }
 
 function activarHover3(boton) {
@@ -192,6 +210,7 @@ function activarHover3(boton) {
     clicsRestants = 48;
     altura = 580;
     amplada = 420;
+    timer = 90;
 }
 
 function activarHover4(boton) {
