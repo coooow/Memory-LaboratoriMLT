@@ -7,37 +7,25 @@ var clicsRestants, numCartes;
 var cartesEmparellades = [];
 var aux = [];
 var timer;
+var deckValue; //si es 1 == deck, 2 == pokemon
+var tipusDeck;
 
 function iniciJoc() { //cooking
-    let j = 0;
     $("#tauler").css({ //mida tauler
         "width": amplada + "px",
         "height": altura + "px"
     });
-    $("#comptador").append("<p>Clics restants: "+clicsRestants+"</p>");
+    $("#comptador").append("<p>Clics restants: " + clicsRestants + "</p>");
+    $("#timer").append("<p>Temps restant: " + timer + "</p>");
     crearCartes(quantesCartes);
-    for (let f = 1; f <= files; f++) {
-        for (let c = 1; c <= columnes; c++) {
-            var carta;
-
-            $("#tauler").append("<div class=" + "'carta'" + " id='" + "f" + f + "c" + c + "'> <div class=" + "'cara darrera'" + "></div><div class=" + "'cara davant'" + "></div></div>");
-            ampladaCarta = $(".carta").width();
-            alcadaCarta = $(".carta").height();
-            carta = $("#f" + f + "c" + c);
-            carta.css({
-                "left": ((c - 1) * (ampladaCarta + separacioH) + separacioH) + "px",
-                "top": ((f - 1) * (alcadaCarta + separacioV) + separacioV) + "px"
-            });
-            carta.find(".davant").addClass(cartesEmparellades[j]);
-            j++;
-        }
-    }
+    tiempo();
+    repartirCartes();
     $(".carta").on("click", function () {
         var select = $(this);
         var p = document.querySelector("#comptador p");
         clicsRestants--;
-        p.innerHTML = "Clics restants: "+clicsRestants;
-        
+        p.innerHTML = "Clics restants: " + clicsRestants;
+
         if (select.hasClass("carta-girada")) {
             return;
         }
@@ -85,30 +73,30 @@ function accionImagen(id) {
     } else {
         // Remueve la clase "expandida" de todas las imágenes antes de expandir la actual
         var imagenes = document.querySelectorAll(".contenedor-imagen");
-        imagenes.forEach(function(img) {
+        imagenes.forEach(function (img) {
             img.classList.remove("expandida");
         });
         imagen.classList.add("expandida");
     }
 }
-function barrejarArray(array){
+function barrejarArray(array) {
     let len = array.length,
         idx;
     for (idx = len - 1; idx > 0; idx--) {
-        let idxRand = Math.floor(Math.random() * (idx + 1) );
+        let idxRand = Math.floor(Math.random() * (idx + 1));
         var temp = array[idx];
         array[idx] = array[idxRand];
         array[idxRand] = temp;
     }
 }
 
-function crearCartes(quantesCartes){ //funcio de creacio de cartes
-    let j; 
+function crearCartes(quantesCartes) { //funcio de creacio de cartes
+    let j;
     var pairList = [];
     pairList.fill(0, 0, 16);
-    for(let i=0; i<quantesCartes/2; i++){
+    for (let i = 0; i < quantesCartes / 2; i++) {
         do {
-            j = Math.floor(Math.random()*16);
+            j = Math.floor(Math.random() * 23);
         } while (pairList[j] === 1);
         pairList[j] = 1;
         cartesEmparellades[i] = 'carta' + j;
@@ -116,32 +104,32 @@ function crearCartes(quantesCartes){ //funcio de creacio de cartes
     barrejarArray(cartesEmparellades);
     copy(cartesEmparellades, aux);
     barrejarArray(aux);
-    for(let i = quantesCartes/2; i<quantesCartes; i++){
+    for (let i = quantesCartes / 2; i < quantesCartes; i++) {
         cartesEmparellades[i] = aux.pop();
     }
     barrejarArray(cartesEmparellades);
-    
+
 }
 
-function copy(arrayCopiat, arrayCopia){
-    for(let i=0; i<arrayCopiat.length; i++){
+function copy(arrayCopiat, arrayCopia) {
+    for (let i = 0; i < arrayCopiat.length; i++) {
         arrayCopia[i] = arrayCopiat[i];
     }
 }
 
-function checkWin(){
-    if(numCartes == 0){
+function checkWin() {
+    if (numCartes == 0) {
         $("#comptador").append("<p>Has guanyat!!!</p>");
     }
 }
 
-function checkLoss(){
-    if(clicsRestants == 0){
+function checkLoss() {
+    if (clicsRestants == 0) {
         $("#comptador").append("<p>Has perdut!</p>");
     }
 }
 
-function checkParam(){ //ver como cambiar entre decks
+function checkParam() { //ver como cambiar entre decks
     var deck, pokemon;
     let check = true;
     deck = document.getElementById("imagen1");
@@ -150,29 +138,32 @@ function checkParam(){ //ver como cambiar entre decks
     btnNormal = document.querySelector(".botonMedio");
     btnDificil = document.querySelector(".botonDificil");
 
-    /* if(deck.classList.contains("expandida")){ //si deck seleccionada
+    if (deck.classList.contains("expandida")) { //si deck seleccionada
+        deckValue = 1;
+        tipusDeck = 'deck';
 
-    } else if (pokemon.classList.contains("expandida")){ //si pokemon seleccionada
-
+    } else if (pokemon.classList.contains("expandida")) { //si pokemon seleccionada
+        deckValue = 2;
+        tipusDeck = 'pokemon';
     } else { //si cap seleccionada, ensenyar error
 
-    } */
+    }
 
-    if(!(btnFacil.classList.contains("hover-activado1") || btnNormal.classList.contains("hover-activado2") || btnDificil.classList.contains("hover-activado3"))){
-        //error
+    if (!(btnFacil.classList.contains("hover-activado1") || btnNormal.classList.contains("hover-activado2") || btnDificil.classList.contains("hover-activado3"))) {
+        //si cap boto seleccionat, mostra un error
+        //afegir error
         check = false;
     }
 
-    if(check){
+    if (check) {
         document.querySelector(".menu").style.display = "none";
         document.querySelector(".juego").style.display = "block";
         iniciJoc();
     }
 }
 
-function jugar(){
+function jugar() {
     checkParam();
-    
 }
 function activarHover1(boton) {
     removerHover();
@@ -220,7 +211,47 @@ function activarHover4(boton) {
 
 function removerHover() {
     var botones = document.querySelectorAll(".botonFacil, .botonMedio, .botonDificil, .botonJugar");
-    botones.forEach(function(boton) {
+    botones.forEach(function (boton) {
         boton.classList.remove("hover-activado1", "hover-activado2", "hover-activado3", "hover-activado4");
     });
+}
+
+function deckSelect(deck) {
+    if(deck==1){
+
+    } else if(deck==2){
+
+    }
+}
+function tiempo() {
+    var temps = document.querySelector("#timer");
+    interval = setInterval(function () {
+        timer--;
+        temps.innerHTML = "Temps restant: " + timer;
+        if (timer == 0) {
+            clearInterval(interval);
+            $(".carta").off("click");
+            $("#timer").append("<p>Has perdut!</p>");
+        }
+    }, 1000);
+}
+
+function repartirCartes(){
+    let j = 0;
+    for (let f = 1; f <= files; f++) {
+        for (let c = 1; c <= columnes; c++) {
+            var carta;
+
+            $("#tauler").append("<div class='" + "carta " + tipusDeck + "' id='" + "f" + f + "c" + c + "'> <div class=" + "'cara darrera'" + "></div><div class=" + "'cara davant'" + "></div></div>");
+            carta = $("#f" + f + "c" + c);
+            ampladaCarta = $(".carta").width();
+            alcadaCarta = $(".carta").height();
+            carta.css({
+                "left": ((c - 1) * (ampladaCarta + separacioH) + separacioH) + "px",
+                "top": ((f - 1) * (alcadaCarta + separacioV) + separacioV) + "px"
+            });
+            carta.find(".davant").addClass(cartesEmparellades[j]);
+            j++;
+        }
+    }
 }
