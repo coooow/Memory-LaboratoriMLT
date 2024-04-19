@@ -4,13 +4,14 @@ var nFiles = 10, nColumnes = 10;
 let primer = true;
 var files, columnes, amplada, altura;
 var clicsRestants, numCartes;
-var cartesEmparellades = [];
-var aux = [];
+var cartesEmparellades = [], cartesSeleccionades = [];;
 var timer;
 var deckValue; //si es 1 == deck, 2 == pokemon
 var tipusDeck;
 
-function iniciJoc() { //cooking
+//FUNCIONS SETUP/DURANT EL JOC
+
+function iniciJoc() { //setup del joc, genera el tauler, cartes, timer i inclou tot el que pasa en el onclick
     var cardWidth, cardHeight;
     switch(deckValue){
         case 1: cardHeight = 120; cardWidth = 80; break;
@@ -50,9 +51,7 @@ function iniciJoc() { //cooking
     });
 };
 
-var cartesSeleccionades = [];
-
-function checkParella() { //func para ver si es parell o no //luego compararlo con joan
+function checkParella() { //func para ver si es parell o no 
     var primeraCarta = cartesSeleccionades[0];
     var segonaCarta = cartesSeleccionades[1];
     var primeraClasse = primeraCarta.find(".davant").attr("class");
@@ -73,70 +72,19 @@ function checkParella() { //func para ver si es parell o no //luego compararlo c
     cartesSeleccionades = [];
 }
 
-function accionImagen(id) {
-    var imagen = document.getElementById(id);
-    if (imagen.classList.contains("expandida")) {
-        imagen.classList.remove("expandida");
-    } else {
-        // Remueve la clase "expandida" de todas las imágenes antes de expandir la actual
-        var imagenes = document.querySelectorAll(".contenedor-imagen");
-        imagenes.forEach(function (img) {
-            img.classList.remove("expandida");
-        });
-        imagen.classList.add("expandida");
-    }
-}
-function barrejarArray(array) {
-    let len = array.length,
-        idx;
-    for (idx = len - 1; idx > 0; idx--) {
-        let idxRand = Math.floor(Math.random() * (idx + 1));
-        var temp = array[idx];
-        array[idx] = array[idxRand];
-        array[idxRand] = temp;
-    }
-}
-
-function crearCartes(quantesCartes) { //funcio de creacio de cartes
-    let j;
-    var pairList = [];
-    pairList.fill(0, 0, 16);
-    for (let i = 0; i < quantesCartes / 2; i++) {
-        do {
-            j = Math.floor(Math.random() * 23);
-        } while (pairList[j] === 1);
-        pairList[j] = 1;
-        cartesEmparellades[i] = 'carta' + j;
-    }
-    barrejarArray(cartesEmparellades);
-    copy(cartesEmparellades, aux);
-    barrejarArray(aux);
-    for (let i = quantesCartes / 2; i < quantesCartes; i++) {
-        cartesEmparellades[i] = aux.pop();
-    }
-    barrejarArray(cartesEmparellades);
-
-}
-
-function copy(arrayCopiat, arrayCopia) {
-    for (let i = 0; i < arrayCopiat.length; i++) {
-        arrayCopia[i] = arrayCopiat[i];
-    }
-}
-
-function checkWin() {
+function checkWin() { //mira si has guanyat
     if (numCartes == 0) {
         $("#comptador").append("<p>Has guanyat!!!</p>");
     }
 }
 
-function checkLoss() {
+function checkLoss() { //mira si has perdut
     if (clicsRestants == 0) {
         $("#comptador").append("<p>Has perdut!</p>");
     }
 }
 
-function checkParam() { //ver como cambiar entre decks
+function jugar() { //funcio del boto jugar al menu, prepara el joc i veu si el jugador ha triat la baralla i dificultat
     var deck, pokemon;
     let check = true;
     deck = document.getElementById("imagen1");
@@ -169,10 +117,35 @@ function checkParam() { //ver como cambiar entre decks
     }
 }
 
-function jugar() {
-    checkParam();
+function tiempo() { //funcio del timer
+    var temps = document.querySelector("#timer");
+    interval = setInterval(function () {
+        timer--;
+        temps.innerHTML = "Temps restant: " + timer;
+        if (timer == 0) {
+            clearInterval(interval);
+            $(".carta").off("click");
+            $("#timer").append("<p>Has perdut!</p>");
+        }
+    }, 1000);
 }
-function activarHover1(boton) {
+//FUNCIONS MENU
+
+function accionImagen(id) { //funció per seleccionar la baralla en el menu
+    var imagen = document.getElementById(id);
+    if (imagen.classList.contains("expandida")) {
+        imagen.classList.remove("expandida");
+    } else {
+        // Remueve la clase "expandida" de todas las imágenes antes de expandir la actual
+        var imagenes = document.querySelectorAll(".contenedor-imagen");
+        imagenes.forEach(function (img) {
+            img.classList.remove("expandida");
+        });
+        imagen.classList.add("expandida");
+    }
+}
+
+function activarHover1(boton) { //funcions pels botons del menu
     removerHover();
     boton.classList.add("hover-activado1");
     files = 2;
@@ -217,20 +190,48 @@ function removerHover() {
     });
 }
 
-function tiempo() {
-    var temps = document.querySelector("#timer");
-    interval = setInterval(function () {
-        timer--;
-        temps.innerHTML = "Temps restant: " + timer;
-        if (timer == 0) {
-            clearInterval(interval);
-            $(".carta").off("click");
-            $("#timer").append("<p>Has perdut!</p>");
-        }
-    }, 1000);
+//FUNCIONS CREACIO CARTES
+
+function barrejarArray(array) { //funcio per barrejar l'array
+    let len = array.length,
+        idx;
+    for (idx = len - 1; idx > 0; idx--) {
+        let idxRand = Math.floor(Math.random() * (idx + 1));
+        var temp = array[idx];
+        array[idx] = array[idxRand];
+        array[idxRand] = temp;
+    }
 }
 
-function repartirCartes(){
+function crearCartes(quantesCartes) { //funcio de creacio de cartes
+    let j;
+    var aux = [];
+    var pairList = [];
+    pairList.fill(0, 0, 16);
+    for (let i = 0; i < quantesCartes / 2; i++) {
+        do {
+            j = Math.floor(Math.random() * 23);
+        } while (pairList[j] === 1);
+        pairList[j] = 1;
+        cartesEmparellades[i] = 'carta' + j;
+    }
+    barrejarArray(cartesEmparellades);
+    copy(cartesEmparellades, aux);
+    barrejarArray(aux);
+    for (let i = quantesCartes / 2; i < quantesCartes; i++) {
+        cartesEmparellades[i] = aux.pop();
+    }
+    barrejarArray(cartesEmparellades);
+
+}
+
+function copy(arrayCopiat, arrayCopia) { //copia un array
+    for (let i = 0; i < arrayCopiat.length; i++) {
+        arrayCopia[i] = arrayCopiat[i];
+    }
+}
+
+function repartirCartes(){ //reparteix les cartes creades 
     let j = 0;
     for (let f = 1; f <= files; f++) {
         for (let c = 1; c <= columnes; c++) {
