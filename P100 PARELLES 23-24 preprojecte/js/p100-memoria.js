@@ -153,7 +153,7 @@ function activarHover1(boton) { //funcions pels botons del menu
     numCartes = 4;
     quantesCartes = 4;
     clicsRestants = 12;
-    timer = 30;
+    timer = numCartes*3;
 }
 
 function activarHover2(boton) {
@@ -164,7 +164,7 @@ function activarHover2(boton) {
     numCartes = 8;
     quantesCartes = 8;
     clicsRestants = 24;
-    timer = 60;
+    timer = numCartes*3;
 }
 
 function activarHover3(boton) {
@@ -175,7 +175,7 @@ function activarHover3(boton) {
     numCartes = 16;
     quantesCartes = 16;
     clicsRestants = 48;
-    timer = 90;
+    timer = numCartes*3;
 }
 
 function activarHover4(boton) {
