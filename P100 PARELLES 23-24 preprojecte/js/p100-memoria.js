@@ -11,6 +11,13 @@ var deckValue; //si es 1 == deck, 2 == pokemon
 var tipusDeck;
 
 function iniciJoc() { //cooking
+    var cardWidth, cardHeight;
+    switch(deckValue){
+        case 1: cardHeight = 120; cardWidth = 80; break;
+        case 2: cardHeight = 111; cardWidth = 111; break;
+    }
+    amplada = separacioH*(columnes+1) + cardWidth*columnes;
+    altura = separacioV*(files+1) + cardHeight*files;
     $("#tauler").css({ //mida tauler
         "width": amplada + "px",
         "height": altura + "px"
@@ -173,8 +180,6 @@ function activarHover1(boton) {
     numCartes = 4;
     quantesCartes = 4;
     clicsRestants = 12;
-    altura = 300;
-    amplada = 220;
     timer = 30;
 }
 
@@ -186,8 +191,6 @@ function activarHover2(boton) {
     numCartes = 8;
     quantesCartes = 8;
     clicsRestants = 24;
-    altura = 300;
-    amplada = 420;
     timer = 60;
 }
 
@@ -199,8 +202,6 @@ function activarHover3(boton) {
     numCartes = 16;
     quantesCartes = 16;
     clicsRestants = 48;
-    altura = 580;
-    amplada = 420;
     timer = 90;
 }
 
@@ -216,13 +217,6 @@ function removerHover() {
     });
 }
 
-function deckSelect(deck) {
-    if(deck==1){
-
-    } else if(deck==2){
-
-    }
-}
 function tiempo() {
     var temps = document.querySelector("#timer");
     interval = setInterval(function () {
