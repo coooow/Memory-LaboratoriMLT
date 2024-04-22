@@ -17,6 +17,7 @@ function iniciJoc() { //setup del joc, genera el tauler, cartes, timer i inclou 
         case 1: cardHeight = 120; cardWidth = 80; break;
         case 2: cardHeight = 111; cardWidth = 111; break;
     }
+    setBackground(deckValue);
     amplada = separacioH*(columnes+1) + cardWidth*columnes;
     altura = separacioV*(files+1) + cardHeight*files;
     $("#tauler").css({ //mida tauler
@@ -129,6 +130,16 @@ function tiempo() { //funcio del timer
         }
     }, 1000);
 }
+
+function setBackground(deck){ //defineix el fons de la pantalla depenent de la baralla
+    var body = document.getElementById("fons");
+    if(deck == 1){
+        body.classList.add("fondojocpoker");
+    } else if (deck == 2){
+        body.classList.add("fondojocpokemon");
+    }
+}
+
 //FUNCIONS MENU
 
 function accionImagen(id) { //funció per seleccionar la baralla en el menu
