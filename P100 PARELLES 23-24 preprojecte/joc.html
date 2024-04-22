@@ -10,7 +10,7 @@
     <script src="js/p100-memoria.js"></script>
 </head>
 
-<body id="fons">
+<body>
     <div class="menu">
         <div class="contenedor-imagen" id="imagen1" onclick="accionImagen('imagen1')"></div>
         <div class="contenedor-imagen" id="imagen2" onclick="accionImagen('imagen2')"></div>
@@ -23,24 +23,29 @@
             <div id="espai"></div>
             <button class="botonMedio" onclick="activarHover2(this)">NORMAL</button>
             <div id="espai"></div>
-            <button class="botonDificil" onclick="activarHover3(this)">DIFÍCIL</button> <!--afegir onclick per tots els botons-->
+            <button class="botonDificil" onclick="activarHover3(this)">DIFÍCIL</button>
+            <!--afegir onclick per tots els botons-->
 
         </div>
         <div class="jugar">
             <button class="botonJugar" onclick="jugar()">JUGAR</button>
         </div>
     </div>
-    <div class="juego">
-        <header>
-            <h2>Memoria cartes - DEMO</h2>
-        </header>
-        <div id="comptador"></div>
-        <div id="timer"></div>
-        <div id="tauler"></div>
-        <footer>
-            <p>Fes clic en una carta per donar-li la volta</p>
-        </footer>
+    <div id="fons">
+        <div class="juego">
+            <header>
+                <h2>Memoria cartes - DEMO</h2>
+            </header>
+            <div id="comptador"></div>
+            <div id="timer"></div>
+            <div id="tauler"></div>
+            <footer>
+                <p>Fes clic en una carta per donar-li la volta</p>
+            </footer>
+            <audio src="../P100 PARELLES 23-24 preprojecte/so/girar-carta.mp3" id="audioGirar"></audio>
+        </div>
     </div>
+
 
 </body>
 

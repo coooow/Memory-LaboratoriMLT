@@ -38,6 +38,7 @@ function iniciJoc() { //setup del joc, genera el tauler, cartes, timer i inclou 
         if (select.hasClass("carta-girada")) {
             return;
         }
+        playFlip();
         select.toggleClass("carta-girada");
         if (primer) {
             cartesSeleccionades.push($(this));
@@ -119,7 +120,7 @@ function jugar() { //funcio del boto jugar al menu, prepara el joc i veu si el j
 }
 
 function tiempo() { //funcio del timer
-    var temps = document.querySelector("#timer");
+    var temps = document.querySelector("#timer p");
     interval = setInterval(function () {
         timer--;
         temps.innerHTML = "Temps restant: " + timer;
@@ -138,6 +139,11 @@ function setBackground(deck){ //defineix el fons de la pantalla depenent de la b
     } else if (deck == 2){
         body.classList.add("fondojocpokemon");
     }
+}
+
+function playFlip(){ //posa el so de girar carta
+    const so = document.getElementById("audioGirar");
+    so.play();
 }
 
 //FUNCIONS MENU
