@@ -18,6 +18,7 @@ function iniciJoc() { //setup del joc, genera el tauler, cartes, timer i inclou 
         case 2: cardHeight = 111; cardWidth = 111; break;
     }
     setBackground(deckValue);
+    fonsContenidor(deckValue);
     amplada = separacioH*(columnes+1) + cardWidth*columnes;
     altura = separacioV*(files+1) + cardHeight*files;
     $("#tauler").css({ //mida tauler
@@ -103,7 +104,7 @@ function jugar() { //funcio del boto jugar al menu, prepara el joc i veu si el j
         deckValue = 2;
         tipusDeck = 'pokemon';
     } else { //si cap seleccionada, ensenyar error
-
+        check = false;
     }
 
     if (!(btnFacil.classList.contains("hover-activado1") || btnNormal.classList.contains("hover-activado2") || btnDificil.classList.contains("hover-activado3"))) {
@@ -144,6 +145,15 @@ function setBackground(deck){ //defineix el fons de la pantalla depenent de la b
 function playFlip(){ //posa el so de girar carta
     const so = document.getElementById("audioGirar");
     so.play();
+}
+
+function fonsContenidor(deck){
+    var contenidor = document.getElementById("contenidor-info");
+    if(deck == 1){
+        contenidor.classList.add("fichapoker");
+    } else if (deck == 2){
+        contenidor.classList.add("bolapokemon");
+    }
 }
 
 //FUNCIONS MENU

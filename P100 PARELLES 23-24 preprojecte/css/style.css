@@ -33,7 +33,30 @@ body {
 }
 
 .fichapoker {
+    position: absolute;
     background-image: url(../images/fichapokerpng.png);
+    width: 300px;
+    height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    left: 15%;
+}
+
+.bolapokemon {
+    position: absolute;
+    background-image: url(../images/pokeballpng.png);
+    width: 300px;
+    height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    left: 10%;
+}
+
+#comptador{
+    margin-top: 35%;
+}
+#timer{
+    margin-top: 15%;
 }
 
 .cara {
@@ -179,18 +202,3 @@ body {
     .carta22{background-position: -666px -222px;}
     .carta23{background-position: -777px -222px;}
 }
-
-/* poker1 */
-/* fila 124 - columna 79 
-.carta1{background-position:    0     0  ; }
-.carta2{background-position:  -79px   0  ; }
-.carta3{background-position: -158px   0  ; }
-/*...
-.carta14{background-position:    0    -124px; }
-.carta15{background-position:  -79px  -124px; }
-.carta16{background-position:  -158px -124px; }
-/*...
-.carta39{background-position:    -948px -248px; }
-/*...
-.carta40{background-position:    0   -372px; }
-/*...*/
