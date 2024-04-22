@@ -8,19 +8,20 @@ var cartesEmparellades = [], cartesSeleccionades = [];;
 var timer;
 var deckValue; //si es 1 == deck, 2 == pokemon
 var tipusDeck;
+const flip = 1, parella = 2, perdre = 3, guanyar = 4;
 
 //FUNCIONS SETUP/DURANT EL JOC
 
 function iniciJoc() { //setup del joc, genera el tauler, cartes, timer i inclou tot el que pasa en el onclick
     var cardWidth, cardHeight;
-    switch(deckValue){
+    switch (deckValue) {
         case 1: cardHeight = 120; cardWidth = 80; break;
         case 2: cardHeight = 111; cardWidth = 111; break;
     }
     setBackground(deckValue);
     fonsContenidor(deckValue);
-    amplada = separacioH*(columnes+1) + cardWidth*columnes;
-    altura = separacioV*(files+1) + cardHeight*files;
+    amplada = separacioH * (columnes + 1) + cardWidth * columnes;
+    altura = separacioV * (files + 1) + cardHeight * files;
     $("#tauler").css({ //mida tauler
         "width": amplada + "px",
         "height": altura + "px"
@@ -39,7 +40,7 @@ function iniciJoc() { //setup del joc, genera el tauler, cartes, timer i inclou 
         if (select.hasClass("carta-girada")) {
             return;
         }
-        playFlip();
+        playSound(flip);
         select.toggleClass("carta-girada");
         if (primer) {
             cartesSeleccionades.push($(this));
@@ -65,11 +66,13 @@ function checkParella() { //func para ver si es parell o no
         setTimeout(function () {
             primeraCarta.remove();
             segonaCarta.remove();
+            playSound(parella);
         }, 500);
     } else {
         setTimeout(function () {
             primeraCarta.toggleClass("carta-girada");
             segonaCarta.toggleClass("carta-girada");
+            playSound(flip);
         }, 500);
     }
     cartesSeleccionades = [];
@@ -77,13 +80,21 @@ function checkParella() { //func para ver si es parell o no
 
 function checkWin() { //mira si has guanyat
     if (numCartes == 0) {
-        $("#comptador").append("<p>Has guanyat!!!</p>");
+        setTimeout(function () {
+            $("#comptador").append("<p>Has guanyat!!!</p>");
+            playSound(guanyar);
+            clearInterval(interval);
+        }, 1000)
     }
 }
 
 function checkLoss() { //mira si has perdut
     if (clicsRestants == 0) {
-        $("#comptador").append("<p>Has perdut!</p>");
+        setInterval(function () {
+            $("#comptador").append("<p>Has perdut!</p>");
+            playSound(perdre);
+            clearInterval(interval);
+        }, 1000)
     }
 }
 
@@ -129,29 +140,36 @@ function tiempo() { //funcio del timer
             clearInterval(interval);
             $(".carta").off("click");
             $("#timer").append("<p>Has perdut!</p>");
+            playSound(perdre);
         }
     }, 1000);
 }
 
-function setBackground(deck){ //defineix el fons de la pantalla depenent de la baralla
+function setBackground(deck) { //defineix el fons de la pantalla depenent de la baralla
     var body = document.getElementById("fons");
-    if(deck == 1){
+    if (deck == 1) {
         body.classList.add("fondojocpoker");
-    } else if (deck == 2){
+    } else if (deck == 2) {
         body.classList.add("fondojocpokemon");
     }
 }
 
-function playFlip(){ //posa el so de girar carta
-    const so = document.getElementById("audioGirar");
+function playSound(input) { //executa un so dependent del input
+    let so;
+    switch (input) {
+        case flip: so = document.getElementById("audioGirar"); break;
+        case parella: so = document.getElementById("audioParella"); break;
+        case perdre: so = document.getElementById("audioPerdre"); break;
+        case guanyar: so = document.getElementById("audioGuanyar"); break;
+    }
     so.play();
 }
 
-function fonsContenidor(deck){
+function fonsContenidor(deck) { //afegeix el fons al contenidor del timer & clics restants
     var contenidor = document.getElementById("contenidor-info");
-    if(deck == 1){
+    if (deck == 1) {
         contenidor.classList.add("fichapoker");
-    } else if (deck == 2){
+    } else if (deck == 2) {
         contenidor.classList.add("bolapokemon");
     }
 }
@@ -180,7 +198,7 @@ function activarHover1(boton) { //funcions pels botons del menu
     numCartes = 4;
     quantesCartes = 4;
     clicsRestants = 12;
-    timer = numCartes*3;
+    timer = numCartes * 3;
 }
 
 function activarHover2(boton) {
@@ -191,7 +209,7 @@ function activarHover2(boton) {
     numCartes = 8;
     quantesCartes = 8;
     clicsRestants = 24;
-    timer = numCartes*3;
+    timer = numCartes * 3;
 }
 
 function activarHover3(boton) {
@@ -202,7 +220,7 @@ function activarHover3(boton) {
     numCartes = 16;
     quantesCartes = 16;
     clicsRestants = 48;
-    timer = numCartes*3;
+    timer = numCartes * 3;
 }
 
 function activarHover4(boton) {
@@ -258,7 +276,7 @@ function copy(arrayCopiat, arrayCopia) { //copia un array
     }
 }
 
-function repartirCartes(){ //reparteix les cartes creades 
+function repartirCartes() { //reparteix les cartes creades 
     let j = 0;
     for (let f = 1; f <= files; f++) {
         for (let c = 1; c <= columnes; c++) {
