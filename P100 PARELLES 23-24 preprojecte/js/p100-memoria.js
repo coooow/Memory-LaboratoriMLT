@@ -10,6 +10,10 @@ var deckValue; //si es 1 == deck, 2 == pokemon
 var tipusDeck;
 const flip = 1, parella = 2, perdre = 3, guanyar = 4, victory = 5;
 
+function refreshPage() {// Reload de la pagina
+    window.location.reload();
+}
+
 //FUNCIONS SETUP/DURANT EL JOC
 
 function iniciJoc() { //setup del joc, genera el tauler, cartes, timer i inclou tot el que pasa en el onclick
@@ -80,7 +84,7 @@ function checkParella() { //func para ver si es parella o no
 
 function checkWin() { //mira si has guanyat
     if (numCartes == 0) {
-        setTimeout(function () {
+        setTimeout(function() {
             $("#comptador").append("<p>Has guanyat!!!</p>");
             playSound(guanyar);
             clearInterval(interval);
@@ -88,6 +92,9 @@ function checkWin() { //mira si has guanyat
         setTimeout(function() {
             var div = document.getElementById('tocho');
             div.classList.toggle('visible');
+        }, 2500);
+        setTimeout(function() {
+            playSound(victory);
         }, 2500);
     }
 }

@@ -74,7 +74,7 @@
     z-index: 1; /* Asegura que los botones estén por encima de las imágenes */
 }
 
-.botonJugar, .botonFacil, .botonMedio, .botonDificil {
+.botonJugar, .botonFacil, .botonMedio, .botonDificil, .botonReload {
     background-image: linear-gradient(to bottom right, rgb(255, 251, 0), rgb(255, 124, 2));
     filter: brigthness(150%);
     width: 300px;
@@ -87,7 +87,14 @@
     border-radius: 47px;
 }
 
-.botonJugar:hover, .hover-activado4 {
+.botonReload {
+    position: absolute;
+    left: 50%;
+    top: 90%;
+    transform: translate(-50%, -50%);
+}
+
+.botonJugar:hover, .hover-activado4, .botonReload:hover {
     background-image: linear-gradient(to bottom right, #5bdeff, #1a53ff);
     color: #ffffff;
     text-shadow: 
@@ -263,5 +270,8 @@ h3 {
 }
 
 #pssd {
+    position: absolute;
+    transform: translate(-50%, -50%);
     top: 10%;
+    left: 50%;
 }
