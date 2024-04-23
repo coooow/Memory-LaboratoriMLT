@@ -201,3 +201,29 @@ h3 {
 .juego{
     display: none;
 }
+
+#popup {
+    display: none;
+    position:absolute;
+    z-index: 9999;
+    background-color: #b80707;
+    height: auto;
+    width: auto;
+    top: 27%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 7px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, 0.445);
+    border-radius: 10px;
+    animation: colorChange 100ms 6 alternate;
+}
+@keyframes colorChange {
+    0% {
+      background-color: #fff;
+    }
+    100% {
+      background-color: #b80707;
+    }
+  }

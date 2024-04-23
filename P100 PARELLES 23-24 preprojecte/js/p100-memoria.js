@@ -55,7 +55,7 @@ function iniciJoc() { //setup del joc, genera el tauler, cartes, timer i inclou 
     });
 };
 
-function checkParella() { //func para ver si es parell o no 
+function checkParella() { //func para ver si es parella o no 
     var primeraCarta = cartesSeleccionades[0];
     var segonaCarta = cartesSeleccionades[1];
     var primeraClasse = primeraCarta.find(".davant").attr("class");
@@ -122,6 +122,13 @@ function jugar() { //funcio del boto jugar al menu, prepara el joc i veu si el j
         //si cap boto seleccionat, mostra un error
         //afegir error
         check = false;
+    }
+
+    if (!check){
+        document.getElementById("popup").style.display = "block";
+        setTimeout(function() {
+            document.getElementById("popup").style.display = 'none';
+          }, 3500);
     }
 
     if (check) {

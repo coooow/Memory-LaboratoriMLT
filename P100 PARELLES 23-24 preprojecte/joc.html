@@ -10,7 +10,7 @@
     <script src="js/p100-memoria.js"></script>
 </head>
 
-<body>
+<body style="background-color: rgb(51, 51, 51);">
     <div class="menu">
         <div class="contenedor-imagen" id="imagen1" onclick="accionImagen('imagen1')"></div>
         <div class="contenedor-imagen" id="imagen2" onclick="accionImagen('imagen2')"></div>
@@ -29,7 +29,9 @@
             <div id="espai"></div>
             <button class="botonDificil" onclick="activarHover3(this)">DIFÍCIL</button>
             <!--afegir onclick per tots els botons-->
-
+        </div>
+        <div id="popup">
+            <p>Recorda marcar la baralla i la dificultat abans de jugar</p>
         </div>
         <div class="jugar">
             <button class="botonJugar" onclick="jugar()">JUGAR</button>
