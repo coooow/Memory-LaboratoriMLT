@@ -8,7 +8,7 @@ var cartesEmparellades = [], cartesSeleccionades = [];;
 var timer;
 var deckValue; //si es 1 == deck, 2 == pokemon
 var tipusDeck;
-const flip = 1, parella = 2, perdre = 3, guanyar = 4;
+const flip = 1, parella = 2, perdre = 3, guanyar = 4, victory = 5;
 
 //FUNCIONS SETUP/DURANT EL JOC
 
@@ -85,6 +85,10 @@ function checkWin() { //mira si has guanyat
             playSound(guanyar);
             clearInterval(interval);
         }, 1000)
+        setTimeout(function() {
+            var div = document.getElementById('tocho');
+            div.classList.toggle('visible');
+        }, 2500);
     }
 }
 
@@ -168,6 +172,7 @@ function playSound(input) { //executa un so dependent del input
         case parella: so = document.getElementById("audioParella"); break;
         case perdre: so = document.getElementById("audioPerdre"); break;
         case guanyar: so = document.getElementById("audioGuanyar"); break;
+        case victory: so = document.getElementById("sanAndres"); break;
     }
     so.play();
 }

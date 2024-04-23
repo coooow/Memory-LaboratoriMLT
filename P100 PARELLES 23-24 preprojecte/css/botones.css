@@ -205,7 +205,7 @@ h3 {
 #popup {
     display: none;
     position:absolute;
-    z-index: 9999;
+    z-index: 9997;
     background-color: #b80707;
     height: auto;
     width: auto;
@@ -226,4 +226,42 @@ h3 {
     100% {
       background-color: #b80707;
     }
-  }
+}
+
+#tocho {
+    visibility: hidden;
+    z-index: 9998;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    opacity: 0;
+    transition: 1s ease;
+}
+#tocho.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+#cj {
+    top: 50%;
+    left: 50%;
+    position:absolute;
+    transform: translate(-50%, -50%);
+    width: 60%;
+}
+#spacer_r, #spacer_l {
+    position: absolute;
+    width: 33%;
+    height: 100%;
+    background-color: #ffffff;
+}
+#spacer_r {
+    transform: translate(200%);
+}
+
+#pssd {
+    top: 10%;
+}
