@@ -186,6 +186,7 @@ function tiempo() { //funcio del timer
         temps.innerHTML = "Temps restant: " + timer;
         if (timer == 0) {
             clearInterval(interval);
+            document.getElementById("popup-lose").style.display = "block";
             $(".carta").off("click");
             playSound(perdre);
         }
