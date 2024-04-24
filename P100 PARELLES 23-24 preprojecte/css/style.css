@@ -52,24 +52,13 @@ body {
     left: 10%;
 }
 
-#comptador{
-    display: inline-block;
-    margin-top: 25%;
-    border-radius: 20px;
-    background-image: linear-gradient(to bottom right, rgb(255, 251, 0), rgb(255, 124, 2));
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-shadow: 
-    -1px -1px 0 #ffffff,  
-     1px -1px 0 #ffffff,
-    -1px  1px 0 #ffffff,
-     1px  1px 0 #ffffff;
-     padding: 3px 15px;
-}
 
-#timer{
-    display: inline-block;
-    margin-top: 15%;
+#timer, #comptador{
+    display: block;
+    margin-top: 10%;
     border-radius: 20px;
+    width: 150px;
+    height: 55px;
     background-image: linear-gradient(to bottom right, rgb(255, 251, 0), rgb(255, 124, 2));
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-shadow: 

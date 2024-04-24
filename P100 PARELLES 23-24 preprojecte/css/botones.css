@@ -87,6 +87,21 @@
     border-radius: 47px;
 }
 
+.botonretornar {
+
+    margin-top: 10%;
+    display: inline-block;
+    background-image: linear-gradient(to bottom right, rgb(255, 251, 0), rgb(255, 124, 2));
+    width: 150px;
+    height: 55px;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 10px double #b2b2b2;
+    border-radius: 47px;
+}
+
 .botonJugar:hover, .hover-activado4 {
     background-image: linear-gradient(to bottom right, #5bdeff, #1a53ff);
     color: #ffffff;
