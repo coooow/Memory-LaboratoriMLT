@@ -219,6 +219,41 @@ h3 {
     border-radius: 10px;
     animation: colorChange 100ms 6 alternate;
 }
+
+#popup-lose {
+    display: none;
+    position:absolute;
+    z-index: 9997;
+    background-color: #b80707;
+    height: auto;
+    width: auto;
+    top: 27%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 7px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, 0.445);
+    border-radius: 10px;
+}
+
+#popup-win {
+    display: none;
+    position:absolute;
+    z-index: 9997;
+    background-color: #4bff60;
+    height: auto;
+    width: auto;
+    top: 27%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 7px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, 0.445);
+    border-radius: 10px;
+}
+
 @keyframes colorChange {
     0% {
       background-color: #fff;
