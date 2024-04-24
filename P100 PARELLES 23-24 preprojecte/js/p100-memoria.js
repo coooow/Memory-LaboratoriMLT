@@ -38,12 +38,13 @@ function iniciJoc() { //setup del joc, genera el tauler, cartes, timer i inclou 
     $(".carta").on("click", function () {
         var select = $(this);
         var p = document.querySelector("#comptador p");
-        clicsRestants--;
-        p.innerHTML = "Clics restants: " + clicsRestants;
 
         if (select.hasClass("carta-girada")) {
             return;
         }
+        clicsRestants--;
+        p.innerHTML = "Clics restants: " + clicsRestants;
+
         playSound(flip);
         select.toggleClass("carta-girada");
         if (primer) {
@@ -84,8 +85,8 @@ function checkParella() { //func para ver si es parella o no
 
 function checkWin() { //mira si has guanyat
     if (numCartes == 0) {
-        setTimeout(function() {
-            $("#comptador").append("<p>Has guanyat!!!</p>");
+        setTimeout(function () {
+            document.getElementById("popup-win").style.display = "block";
             playSound(guanyar);
             clearInterval(interval);
         }, 1000)
@@ -101,9 +102,9 @@ function checkWin() { //mira si has guanyat
 
 function checkLoss() { //mira si has perdut
     if (clicsRestants == 0) {
-        setInterval(function () {
-            $("#comptador").append("<p>Has perdut!</p>");
+        setTimeout(function () {
             playSound(perdre);
+            document.getElementById("popup-lose").style.display = "block";
             clearInterval(interval);
         }, 1000)
     }
@@ -157,7 +158,6 @@ function tiempo() { //funcio del timer
         if (timer == 0) {
             clearInterval(interval);
             $(".carta").off("click");
-            $("#timer").append("<p>Has perdut!</p>");
             playSound(perdre);
         }
     }, 1000);
