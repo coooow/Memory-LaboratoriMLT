@@ -95,6 +95,9 @@ function checkWin() { //mira si has guanyat
             div.classList.toggle('visible');
         }, 2500);
         setTimeout(function() {
+            let tema = $('#musikote');
+            tema[0].pause();
+            $('#musikote').hide();
             playSound(victory);
         }, 2500);
     }
@@ -147,7 +150,27 @@ function jugar() { //funcio del boto jugar al menu, prepara el joc i veu si el j
         document.querySelector(".menu").style.display = "none";
         document.querySelector(".juego").style.display = "block";
         iniciJoc();
+
+        if (btnFacil.classList.contains("hover-activado1")){
+            musikon('../P100 PARELLES 23-24 preprojecte/so/zz_toisiloco.mp3');
+        }else if (btnNormal.classList.contains("hover-activado2")) {
+            musikon('../P100 PARELLES 23-24 preprojecte/so/zzz_midnotgonnalie.mp3');
+        }else if (btnDificil.classList.contains("hover-activado3")) {
+            musikon('../P100 PARELLES 23-24 preprojecte/so/zzzz_darksouls.mp3');
+        }
     }
+    
+    //          ↓↓change de musikote↓↓
+
+    function musikon(temazo){
+        $(document).ready(function() {
+            var audio = $('#musikote');
+            audio.find('source').attr('src', temazo);
+            audio[0].load();
+    });
+    }
+
+    //          ↑↑change de musikote↑↑
 }
 
 function tiempo() { //funcio del timer

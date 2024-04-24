@@ -93,13 +93,6 @@
     transform: translate(-50%, -50%);
 }
 
-.botonReload {
-    position: absolute;
-    left: 50%;
-    top: 90%;
-    transform: translate(-50%, -50%);
-}
-
 .botonretornar {
 
     margin-top: 10%;
@@ -125,7 +118,6 @@
     -1px  1px 0 #000,
      1px  1px 0 #000;
     border-color: #ffffff;
-
 }
 
 .botonFacil:hover, .hover-activado1 {
@@ -248,6 +240,14 @@ h3 {
     border-radius: 10px;
     animation: colorChange 100ms 6 alternate;
 }
+@keyframes colorChange {
+    0% {
+      background-color: #fff;
+    }
+    100% {
+      background-color: #b80707;
+    }
+}
 
 #popup-lose {
     display: none;
@@ -281,15 +281,6 @@ h3 {
     padding-right: 20px;
     box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, 0.445);
     border-radius: 10px;
-}
-
-@keyframes colorChange {
-    0% {
-      background-color: #fff;
-    }
-    100% {
-      background-color: #b80707;
-    }
 }
 
 #tocho {
