@@ -10,6 +10,10 @@ var deckValue; //si es 1 == deck, 2 == pokemon
 var tipusDeck;
 const flip = 1, parella = 2, perdre = 3, guanyar = 4, victory = 5;
 
+const botonFacil = document.querySelector(".botonFacil");
+const botonNormal = document.querySelector(".botonMedio");
+const botonDificil = document.querySelector(".botonDificil");
+
 function refreshPage() {// Reload de la pagina
     window.location.reload();
 }
@@ -90,11 +94,11 @@ function checkWin() { //mira si has guanyat
             playSound(guanyar);
             clearInterval(interval);
         }, 1000)
-        setTimeout(function() {
+        setTimeout(function () {
             var div = document.getElementById('tocho');
             div.classList.toggle('visible');
         }, 2500);
-        setTimeout(function() {
+        setTimeout(function () {
             let tema = $('#musikote');
             tema[0].pause();
             $('#musikote').hide();
@@ -139,11 +143,11 @@ function jugar() { //funcio del boto jugar al menu, prepara el joc i veu si el j
         check = false;
     }
 
-    if (!check){
+    if (!check) {
         document.getElementById("popup").style.display = "block";
-        setTimeout(function() {
+        setTimeout(function () {
             document.getElementById("popup").style.display = 'none';
-          }, 3500);
+        }, 3500);
     }
 
     if (check) {
@@ -151,27 +155,29 @@ function jugar() { //funcio del boto jugar al menu, prepara el joc i veu si el j
         document.querySelector(".juego").style.display = "block";
         iniciJoc();
 
-        if (btnFacil.classList.contains("hover-activado1")){
+        if (btnFacil.classList.contains("hover-activado1")) {
             musikon('../P100 PARELLES 23-24 preprojecte/so/zz_toisiloco.mp3');
-        }else if (btnNormal.classList.contains("hover-activado2")) {
+        } else if (btnNormal.classList.contains("hover-activado2")) {
             musikon('../P100 PARELLES 23-24 preprojecte/so/zzz_midnotgonnalie.mp3');
-        }else if (btnDificil.classList.contains("hover-activado3")) {
+        } else if (btnDificil.classList.contains("hover-activado3")) {
             musikon('../P100 PARELLES 23-24 preprojecte/so/zzzz_darksouls.mp3');
         }
-    }
-    
-    //          ↓↓change de musikote↓↓
 
-    function musikon(temazo){
-        $(document).ready(function() {
-            var audio = $('#musikote');
-            audio.find('source').attr('src', temazo);
-            audio[0].load();
-    });
+        stow();
     }
 
-    //          ↑↑change de musikote↑↑
 }
+//          ↓↓change de musikote↓↓
+
+function musikon(temazo) {
+    $(document).ready(function () {
+        var audio = $('#musikote');
+        audio.find('source').attr('src', temazo);
+        audio[0].load();
+    });
+}
+
+//          ↑↑change de musikote↑↑
 
 function tiempo() { //funcio del timer
     var temps = document.querySelector("#timer p");
@@ -337,3 +343,33 @@ function repartirCartes() { //reparteix les cartes creades
         }
     }
 }
+
+
+/*
+INTENT DE LOCALSTORAGE    
+                              o7
+                             /|
+                              /\
+
+window.onload = function() {
+    const savedState = localStorage.getItem('buttonState');
+    switch(savedState) {
+        case 'hover-activado1': botonFacil.classList.add("hover-activado1"); break;
+        case 'hover-activado2': botonNormal.classList.add("hover-activado2"); break;
+        case 'hover-activado3': botonDificil.classList.add("hover-activado3"); break;
+        default: break;
+    }
+};
+
+function stow(){
+    if (botonFacil.classList.contains('hover-activado1')) {
+        localStorage.setItem('buttonState', 'hover-activado1');
+      } else if (botonNormal.classList.contains('hover-activado2')) {
+        localStorage.setItem('buttonState', 'hover-activado2');
+      } else if (botonDificil.classList.contains('hover-activado3')) {
+        localStorage.setItem('buttonState', 'hover-activado3');
+      }
+}
+
+
+*/
