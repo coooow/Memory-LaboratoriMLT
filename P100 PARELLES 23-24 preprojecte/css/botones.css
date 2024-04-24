@@ -332,3 +332,10 @@ h3 {
     top: 10%;
     left: 50%;
 }
+
+#musikote{
+    position: absolute;
+    z-index: 9999;
+    left: 5%;
+    top: 85%;
+}
